@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.com.itdr.mappers.productMapper" >
-  <resultMap id="BaseResultMap" type="main.com.itdr.pojo.product" >
+<mapper namespace="com.itdr.mappers.productMapper" >
+  <resultMap id="BaseResultMap" type="com.itdr.pojo.product" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="category_id" property="categoryId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="main.com.itdr.pojo.productWithBLOBs" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.itdr.pojo.productWithBLOBs" extends="BaseResultMap" >
     <result column="sub_images" property="subImages" jdbcType="LONGVARCHAR" />
     <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -39,7 +39,7 @@
     delete from neuedu_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.com.itdr.pojo.productWithBLOBs" >
+  <insert id="insert" parameterType="com.itdr.pojo.productWithBLOBs" >
     insert into neuedu_product (id, category_id, name, 
       subtitle, main_image, price, 
       stock, status, is_new, is_hot, 
@@ -51,7 +51,7 @@
       #{isBanner,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{subImages,jdbcType=LONGVARCHAR}, #{detail,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="main.com.itdr.pojo.productWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.itdr.pojo.productWithBLOBs" >
     insert into neuedu_product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -148,7 +148,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.com.itdr.pojo.productWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.productWithBLOBs" >
     update neuedu_product
     <set >
       <if test="categoryId != null" >
@@ -196,7 +196,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="main.com.itdr.pojo.productWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.itdr.pojo.productWithBLOBs" >
     update neuedu_product
     set category_id = #{categoryId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
       detail = #{detail,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.com.itdr.pojo.product" >
+  <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.product" >
     update neuedu_product
     set category_id = #{categoryId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},

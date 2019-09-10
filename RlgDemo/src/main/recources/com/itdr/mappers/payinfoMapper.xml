@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.com.itdr.mappers.payinfoMapper" >
-  <resultMap id="BaseResultMap" type="main.com.itdr.pojo.payinfo" >
+<mapper namespace="com.itdr.mappers.payinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.itdr.pojo.payinfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="order_no" property="orderNo" jdbcType="BIGINT" />
@@ -25,7 +25,7 @@
     delete from neuedu_payinfo
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.com.itdr.pojo.payinfo" >
+  <insert id="insert" parameterType="com.itdr.pojo.payinfo" >
     insert into neuedu_payinfo (id, user_id, order_no, 
       pay_platform, platform_number, platform_status, 
       create_time, update_time)
@@ -33,7 +33,7 @@
       #{payPlatform,jdbcType=INTEGER}, #{platformNumber,jdbcType=VARCHAR}, #{platformStatus,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="main.com.itdr.pojo.payinfo" >
+  <insert id="insertSelective" parameterType="com.itdr.pojo.payinfo" >
     insert into neuedu_payinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -88,7 +88,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.com.itdr.pojo.payinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.payinfo" >
     update neuedu_payinfo
     <set >
       <if test="userId != null" >
@@ -115,7 +115,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.com.itdr.pojo.payinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.payinfo" >
     update neuedu_payinfo
     set user_id = #{userId,jdbcType=INTEGER},
       order_no = #{orderNo,jdbcType=BIGINT},

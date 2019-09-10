@@ -25,37 +25,28 @@ http://www.springframework.org/schema/util/spring-util-4.0.xsd">
     <!--加载配置文件-->
     <context:property-placeholder location="classpath:dc.properties"/>
     <!--数据库连接池1-->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
-        <property name="driverClassName" value="${dc.driver}"/>
-        <property name="url" value="${dc.url}"/>
-        <property name="username" value="${dc.username}"/>
-        <property name="password" value="${dc.password}"/>
-        <property name="maxActive" value="10"/>
-        <property name="maxIdle" value="5"/>
-    </bean>
 
-    <bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${dc.driver}"/>
         <property name="url" value="${dc.url}"/>
         <property name="username" value="${dc.username}"/>
         <property name="password" value="${dc.password}"/>
     </bean>
 
-    <!--&lt;!&ndash; 配置SqlSessionFactory &ndash;&gt;-->
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-        <!--&lt;!&ndash; 配置mybatis核心配置文件 &ndash;&gt;-->
-        <!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
-        <!--&lt;!&ndash; 配置数据源 &ndash;&gt;-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
+    <!-- 配置SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 配置mybatis核心配置文件 -->
+        <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+        <!-- 配置数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 
-    <!--&lt;!&ndash; Mapper代理的方式开发方式二，扫描包方式配置代理 &ndash;&gt;-->
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--&lt;!&ndash; 配置Mapper接口 &ndash;&gt;-->
-        <!--<property name="basePackage" value="com.itdr.dao" />-->
-    <!--</bean>-->
+    <!-- Mapper代理的方式开发方式二，扫描包方式配置代理 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 配置Mapper接口 -->
+        <property name="basePackage" value="com.itdr.mappers" />
+    </bean>
 
 </beans>
 

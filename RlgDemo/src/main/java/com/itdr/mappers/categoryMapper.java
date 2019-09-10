@@ -1,6 +1,5 @@
 package com.itdr.mappers;
 
-
 import com.itdr.pojo.category;
 
 public interface categoryMapper {

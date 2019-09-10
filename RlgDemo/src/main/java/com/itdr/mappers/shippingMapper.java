@@ -1,6 +1,5 @@
 package com.itdr.mappers;
 
-
 import com.itdr.pojo.shipping;
 
 public interface shippingMapper {
